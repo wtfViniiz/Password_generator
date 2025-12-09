@@ -1,0 +1,301 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap");
+
+/* Reset Global */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: url("../img/5162035.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #ffffff;
+  padding: 1rem;
+}
+
+#register-container {
+  background: rgba(255, 255, 255, 0.01);
+  backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 2.5rem;
+  width: 100%;
+  max-width: 450px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  position: relative;
+  overflow: hidden;
+  background-image: radial-gradient(
+    400px circle at var(--x) var(--y),
+    rgba(195, 195, 195, 0.154),
+    transparent 40%
+  );
+}
+
+#register-container::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  padding: 1.5px;
+
+  background: radial-gradient(
+    800px circle at var(--x) var(--y),
+    rgb(94, 158, 255),
+    
+    transparent 20%
+  );
+
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: xor;
+  mask-composite: exclude;
+
+  pointer-events: none; 
+  z-index: 10; 
+}
+
+#register-layer h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(90deg, #fff, #dddddd);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+}
+
+#register-form h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #e0e0e0;
+}
+
+#register-form p {
+  font-size: 0.9rem;
+  color: #dadada;
+  margin-bottom: 1.5rem;
+  line-height: 1.4;
+}
+
+.form-control {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.2rem;
+  position: relative;
+}
+
+label {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #d1d1d1;
+  margin-left: 4px;
+}
+
+input {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  padding: 14px 16px;
+  font-size: 1rem;
+  color: #fff;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+input::placeholder {
+  color: #cdcdcd95;
+}
+
+input:focus {
+  background: rgba(0, 0, 0, 0.5);
+  border-color: #5e9eff;
+  box-shadow: 0 0 15px rgba(94, 158, 255, 0.2);
+}
+
+#generate-password {
+  color: #00ff37;
+  font-weight: 600;
+  cursor: pointer;
+  transition: color 0.3s;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+#generate-password:hover {
+  color: #00c52b;
+}
+
+#generated-password {
+  background: rgba(94, 158, 255, 0.1);
+  border: 1px dashed rgba(94, 158, 255, 0.3);
+  padding: 1rem;
+  border-radius: 10px;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  text-align: center;
+  display: none;
+}
+
+.password-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  flex-wrap: wrap;
+}
+
+#generated-password h4 {
+  font-family: "Courier New", monospace;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+  color: #fff;
+  margin: 0;
+  word-break: break-all;
+  flex: 1;
+  min-width: 200px;
+}
+
+#copy-password-btn {
+  background: rgba(94, 255, 121, 0.2);
+  border: 1px solid rgba(0, 255, 85, 0.6);
+  border-radius: 8px;
+  padding: 8px 10px;
+  cursor: pointer;
+  color: #00ff37;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+  min-width: 36px;
+  height: 36px;
+}
+
+#copy-password-btn:hover {
+  background: rgba(94, 255, 161, 0.3);
+  border-color: rgba(0, 255, 85, 0.6);
+  transform: scale(1.05);
+}
+
+#copy-password-btn:active {
+  transform: scale(0.95);
+}
+
+#copy-password-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+#copy-success-message {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: #ffffff;
+  padding: 12px 20px;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  box-shadow: 0 4px 20px rgba(16, 185, 129, 0.4);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  opacity: 0;
+  transform: translateY(-20px) scale(0.9);
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  pointer-events: none;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+#copy-success-message::before {
+  content: "✓";
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+#copy-success-message.show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+#continue-container {
+  display: flex;
+  justify-content: right;
+  margin-top: 1.5rem;
+}
+
+#continue-container button {
+  background: linear-gradient(90deg, #09ff00);
+  color: #000000;
+  border: none;
+  border-radius: 12px;
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  margin-top: 0;
+}
+
+#continue-container button:hover {
+  background: linear-gradient(90deg, #60ce06);
+  color: #000000;
+  border: none;
+  border-radius: 12px;
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+@media (max-width: 480px) {
+  #copy-success-message {
+    top: 10px;
+    right: 10px;
+    left: 10px;
+    right: auto;
+    text-align: center;
+    justify-content: center;
+  }
+
+  .password-display {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  #generated-password h4 {
+    min-width: 100%;
+  }
+
+  #generated-password h4 {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  #register-container {
+    padding: 1.5rem;
+    border-radius: 16px;
+  }
+
+  #register-layer h1 {
+    font-size: 1.75rem;
+  }
+}

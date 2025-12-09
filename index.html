@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta password="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <script src="js/scripts.js" defer></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="register-container">
+      <div id="register-banner">
+        <div id="register-layer">
+          <h1>Seja bem-vindo!</h1>
+        </div>
+      </div>
+      <div id="register-form">
+        <h2>Crie sua conta</h2>
+        <p>Registre-se para ultilizar todas as funcionalidades do sistema.</p>
+        <div class="form-control">
+          <label for="name">Nome</label>
+          <input
+            type="text"
+            name="name"
+            id="name"
+            placeholder="Insira seu nome completo"
+          />
+        </div>
+        <div class="form-control">
+          <label for="email">E-mail</label>
+          <input
+            type="text"
+            type="email"
+            id="email"
+            placeholder="Insira seu e-mail"
+          />
+        </div>
+        <div class="form-control">
+          <label for="password">Senha</label>
+          <input
+            type="text"
+            type="password"
+            id="password"
+            placeholder="Insira sua senha "
+          />
+        </div>
+
+        <p>Quer ajuda para criar uma senha segura? <span id="generate-password">Clique aqui.</span></p>
+        <div id="generated-password">
+            <p>Aqui está a sua senha:</p>
+            <div class="password-display">
+              <h4></h4>
+              <button id="copy-password-btn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
+              </button>
+            </div>
+        </div>
+      </div>
+      <div class="form-control">
+        <label for="password-confirmation">Confirmação de senha</label>
+        <input
+          type="text"
+          type="password-confirmation"
+          id="password-confirmation"
+          placeholder="Confirme sua senha"
+        />
+      </div>
+      <div id="continue-container">
+        <button type="submit">Entrar</button>
+      </div>
+    </div>
+    <div id="copy-success-message">Copiado com sucesso!</div>
+  </body>
+</html>
