@@ -1,77 +1,104 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta password="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/styles.css" />
-    <script src="js/scripts.js" defer></script>
-    <title>Document</title>
-  </head>
-  <body>
-    <div id="register-container">
-      <div id="register-banner">
-        <div id="register-layer">
-          <h1>Seja bem-vindo!</h1>
-        </div>
-      </div>
-      <div id="register-form">
-        <h2>Crie sua conta</h2>
-        <p>Registre-se para ultilizar todas as funcionalidades do sistema.</p>
-        <div class="form-control">
-          <label for="name">Nome</label>
-          <input
-            type="text"
-            name="name"
-            id="name"
-            placeholder="Insira seu nome completo"
-          />
-        </div>
-        <div class="form-control">
-          <label for="email">E-mail</label>
-          <input
-            type="text"
-            type="email"
-            id="email"
-            placeholder="Insira seu e-mail"
-          />
-        </div>
-        <div class="form-control">
-          <label for="password">Senha</label>
-          <input
-            type="text"
-            type="password"
-            id="password"
-            placeholder="Insira sua senha "
-          />
-        </div>
 
-        <p>Quer ajuda para criar uma senha segura? <span id="generate-password">Clique aqui.</span></p>
-        <div id="generated-password">
-            <p>Aqui está a sua senha:</p>
-            <div class="password-display">
-              <h4></h4>
-              <button id="copy-password-btn">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
-                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                </svg>
-              </button>
-            </div>
-        </div>
-      </div>
-      <div class="form-control">
-        <label for="password-confirmation">Confirmação de senha</label>
-        <input
-          type="text"
-          type="password-confirmation"
-          id="password-confirmation"
-          placeholder="Confirme sua senha"
-        />
-      </div>
-      <div id="continue-container">
-        <button type="submit">Entrar</button>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Gerador de senhas seguras com interface moderna e glassmorphism. Crie senhas fortes e personalizadas para proteger suas contas." />
+  <meta name="keywords" content="gerador de senhas, password generator, segurança, senha segura" />
+  <meta name="author" content="Seu Nome" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <script src="js/scripts.js" defer></script>
+  <title>Gerador de Senhas Seguras | Password Generator</title>
+</head>
+
+<body>
+  <div id="register-container">
+    <div id="register-banner">
+      <div id="register-layer">
+        <h1>Seja bem-vindo!</h1>
       </div>
     </div>
-    <div id="copy-success-message">Copiado com sucesso!</div>
-  </body>
+    <div id="register-form">
+      <h2>Crie sua conta</h2>
+      <p>Registre-se para ultilizar todas as funcionalidades do sistema.</p>
+      <div class="form-control">
+        <label for="name">Nome <span class="required">*</span></label>
+        <input type="text" name="name" id="name" placeholder="Insira seu nome completo" required aria-required="true"
+          aria-describedby="name-error" />
+        <span class="error-message" id="name-error" role="alert"></span>
+      </div>
+      <div class="form-control">
+        <label for="email">E-mail <span class="required">*</span></label>
+        <input type="email" name="email" id="email" placeholder="Insira seu e-mail" required aria-required="true"
+          aria-describedby="email-error" />
+        <span class="error-message" id="email-error" role="alert"></span>
+      </div>
+      <div class="form-control">
+        <label for="password">Senha <span class="required">*</span></label>
+        <input type="password" name="password" id="password" placeholder="Insira sua senha" required
+          aria-required="true" aria-describedby="password-error password-strength-info" />
+        <span class="error-message" id="password-error" role="alert"></span>
+        <div id="password-strength-info" class="password-strength-info" aria-live="polite"></div>
+      </div>
+      <p>Quer ajuda para criar uma senha segura? <span id="generate-password" role="button" tabindex="0"
+          aria-label="Gerar senha segura">Clique aqui.</span></p>
+      <!-- Opções de personalização -->
+      <div id="password-options" style="display: none;">
+        <div class="option-group">
+          <label for="password-length">Tamanho da senha: <span id="length-value">10</span></label>
+          <input type="range" id="password-length" min="8" max="32" value="10" aria-label="Tamanho da senha">
+        </div>
+        <div class="option-group">
+          <label>
+            <input type="checkbox" id="include-uppercase" checked aria-label="Incluir letras maiúsculas">
+            Letras Maiúsculas
+          </label>
+          <label>
+            <input type="checkbox" id="include-lowercase" checked aria-label="Incluir letras minúsculas">
+            Letras Minúsculas
+          </label>
+          <label>
+            <input type="checkbox" id="include-numbers" checked aria-label="Incluir números">
+            Números
+          </label>
+          <label>
+            <input type="checkbox" id="include-symbols" checked aria-label="Incluir símbolos">
+            Símbolos
+          </label>
+        </div>
+      </div>
+      <div id="generated-password">
+        <p>Aqui está a sua senha:</p>
+        <div class="password-display">
+          <h4 id="password-output" aria-live="polite"></h4>
+          <button id="copy-password-btn" aria-label="Copiar senha">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+            </svg>
+          </button>
+        </div>
+        <div id="password-strength">
+          <div class="strength-bar">
+            <div class="strength-fill" id="strength-fill"></div>
+          </div>
+          <p class="strength-text" id="strength-text">Força da senha</p>
+        </div>
+      </div>
+    </div>
+    <div class="form-control">
+      <label for="password-confirmation">Confirmação de senha <span class="required">*</span></label>
+      <input type="password" name="password-confirmation" id="password-confirmation" placeholder="Confirme sua senha"
+        required aria-required="true" aria-describedby="password-confirmation-error" />
+      <span class="error-message" id="password-confirmation-error" role="alert"></span>
+    </div>
+    <div id="continue-container">
+      <button type="submit" id="submit-btn" aria-label="Criar conta">Criar Conta</button>
+    </div>
+  </div>
+  <div id="copy-success-message">Copiado com sucesso!</div>
+</body>
+
 </html>
